@@ -16,7 +16,7 @@ public:
 
   TimeKeeper(double presetDuration, double smoothDuration, double hardcutDuration, double easterEgg);
 
-  void UpdateTimers();
+  virtual void UpdateTimers();
 
   void StartPreset();
   void StartSmoothing();
@@ -52,7 +52,7 @@ public:
   long startTime;
 #endif /** !WIN32 */
 
-private:
+protected:
 
   double _easterEgg;
   double _presetDuration;
