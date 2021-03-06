@@ -328,13 +328,15 @@ public:
   void default_key_handler(projectMEvent event, projectMKeycode keycode);
   Renderer *renderer;
 
+  Settings _settings;
+  TimeKeeper *timeKeeper;
+
 private:
   PCM * _pcm;
   double sampledPresetDuration();
   BeatDetect * beatDetect;
   PipelineContext * _pipelineContext;
   PipelineContext * _pipelineContext2;
-  Settings _settings;
 
 
   int wvw;      //windowed dimensions
@@ -378,8 +380,6 @@ private:
 
   /// Destination preset when smooth preset switching
   std::unique_ptr<Preset> m_activePreset2;
-
-  TimeKeeper *timeKeeper;
 
   int m_flags;
 
