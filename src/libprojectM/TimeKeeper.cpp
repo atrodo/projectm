@@ -23,13 +23,20 @@ TimeKeeper::TimeKeeper(double presetDuration, double smoothDuration, double hard
 	UpdateTimers();
   }
 
-  void TimeKeeper::UpdateTimers()
+  void TimeKeeper::UpdateTimers(double overrideTime)
   {
+        if ( overrideTime >= 0 )
+        {
+                _currentTime = overrideTime;
+        }
+        else
+        {
 #ifndef WIN32
-	_currentTime = getTicks ( &startTime ) * 0.001;
+       _currentTime = getTicks ( &startTime ) * 0.001;
 #else
-	_currentTime = getTicks ( startTime ) * 0.001;
+       _currentTime = getTicks ( startTime ) * 0.001;
 #endif /** !WIN32 */
+        }
 
 	_presetFrameA++;
 	_presetFrameB++;

@@ -327,7 +327,11 @@ void projectM::renderFrame()
     projectM::renderFrameEndOnSeparatePasses(comboPipeline);
 }
 
-
+void projectM::setNextFrameTime(double overrideTime)
+{
+    this->nextOverrideTime = overrideTime;
+    isOverrideTimeSet = false;
+}
 
 
 
@@ -347,7 +351,15 @@ Pipeline * projectM::renderFrameOnlyPass1(Pipeline *pPipeline) /*pPipeline is a 
     int x, y;
 #endif
 
-    timeKeeper->UpdateTimers();
+    if ( isOverrideTimeSet )
+    {
+      timeKeeper->UpdateTimers(nextOverrideTime);
+      isOverrideTimeSet = false;
+    }
+    else
+    {
+      timeKeeper->UpdateTimers();
+    }
 /*
     if (timeKeeper->IsSmoothing())
     {

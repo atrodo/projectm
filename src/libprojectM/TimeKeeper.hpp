@@ -16,7 +16,7 @@ public:
 
   TimeKeeper(double presetDuration, double smoothDuration, double hardcutDuration, double easterEgg);
 
-  virtual void UpdateTimers();
+  virtual void UpdateTimers(double overrideTime = -1);
 
   void StartPreset();
   void StartSmoothing();

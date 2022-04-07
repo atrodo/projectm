@@ -174,6 +174,7 @@ public:
   void renderFrameOnlyPass2(Pipeline *pPipeline,int xoffset,int yoffset,int eye);
   void renderFrameEndOnSeparatePasses(Pipeline *pPipeline);
   unsigned initRenderToTexture();
+  void setNextFrameTime(double overrideTime = -1);
   void key_handler( projectMEvent event,
 		    projectMKeycode keycode, projectMModifier modifier );
 
@@ -350,6 +351,9 @@ private:
   int timestart;
   int count;
   float fpsstart;
+
+  bool isOverrideTimeSet = false;
+  float nextOverrideTime = 0;
 
   void readConfig(const std::string &configFile);
   void readSettings(const Settings &settings);
